@@ -1,0 +1,855 @@
+@font-face {
+  font-family: "Syncopate";
+  src: url("../assets/fonts/Syncopate-Bold.ttf");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/Inter-Italic-VariableFont_opsz\,wght.ttf");
+}
+:root {
+  --bg-main: #0d0d0d;
+  --text-main: #f5f5f5;
+  --btn-accent: #00adff;
+
+  --padding-small: 8px;
+  --padding-m: 16px;
+  --padding-lager: 24px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter";
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+li,
+a {
+  text-decoration: none;
+  list-style-type: none;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+#smooth-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Syncopate", sans-serif;
+}
+/* louderPage */
+
+.louderPage {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.louderPage .louders {
+  position: absolute;
+  top: 0;
+  width: 50%; /* Each takes half the screen width */
+  height: 100vh;
+  background-color: var(--bg-main);
+  z-index: 10;
+}
+
+.louder_part1 {
+  left: 0;
+}
+
+.louder_part2 {
+  right: 0;
+}
+
+.louderPage .percentage,
+.louderPage #louderPage_SVG {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+
+.louderPage .percentage {
+  color: var(--text-main);
+  font-size: 16vw;
+  font-weight: 900;
+  z-index: 100;
+}
+
+.louderPage #louderPage_SVG {
+  z-index: 50;
+  visibility: visible;
+  width: 80%;
+  height: auto;
+}
+
+/*  */
+
+header,
+main {
+  visibility: hidden;
+}
+
+/*  */
+
+/* header navbar */
+
+header nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 9vw;
+  background-color: var(--bg-main);
+  overflow: hidden;
+  z-index: 10;
+}
+
+header nav .logo {
+  color: var(--text-main);
+  font-size: 5vw;
+  font-weight: 200;
+}
+
+/* navbar part */
+
+header nav .Hamburger {
+  display: flex;
+  width: 40px;
+  flex-direction: column;
+  gap: 10px;
+}
+
+header nav .Hamburger span {
+  width: 100%;
+  height: 3px;
+  background-color: var(--text-main);
+  transition: transform 0.3s ease;
+}
+
+header .navbar {
+  position: fixed;
+  z-index: 9999;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 90vh;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+  padding: 50px;
+  gap: 5vw;
+}
+
+header .navbar li a {
+  color: var(--bg-main);
+  font-size: xx-large;
+  font-weight: 900;
+
+  position: relative;
+  display: block;
+}
+
+header .navbar li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 95%;
+  height: 3px;
+  background-color: var(--btn-accent);
+
+  transform-origin: left;
+  transform: scale(0);
+  transition: transform 0.3s ease;
+}
+
+header .navbar li a:hover::after {
+  transform: scale(1);
+}
+
+/* navbar js animation part */
+
+header nav .Hamburger.active span:nth-child(1) {
+  transform: translateY(18px) rotate(45deg);
+}
+header nav .Hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+header nav .Hamburger.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* main hero */
+
+main .hero {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  overflow: hidden;
+}
+
+/* leftPart */
+main .hero .leftPart {
+  width: 60%;
+  height: 100%;
+  background-color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main .hero .leftPart .textContant {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+  gap: 45px;
+}
+
+main .hero .leftPart .textContant h4 {
+  color: var(--bg-main);
+  font-size: 4vw;
+  font-weight: 200;
+  text-wrap: no-warp;
+  visibility: hidden;
+}
+
+main .hero .leftPart .textContant h1 {
+  color: var(--bg-main);
+  font-size: 6vw;
+  font-weight: bold;
+  visibility: hidden;
+}
+
+main .hero .leftPart .textContant p {
+  color: var(--bg-main);
+  font-size: 2vw;
+  font-weight: 400;
+  visibility: hidden;
+}
+/* rightPart */
+main .hero .rightPart {
+  width: 40%;
+  height: 100%;
+  background-color: var(--bg-main);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+main .hero .rightPart .imageNamber {
+  color: var(--text-main);
+  opacity: 0.7;
+  font-size: larger;
+  font-weight: 200;
+  width: 50%;
+  padding-bottom: var(--padding-small);
+  z-index: 999;
+}
+
+main .hero .rightPart .image {
+  width: 50%;
+  height: auto;
+}
+
+main .hero .rightPart .image img {
+  width: 100%;
+  height: 100%;
+  background-size: 100%;
+  background-position: center;
+  clip-path: inset(100% 0 0 0);
+}
+
+/* ticker */
+main .div-ticker {
+  position: relative;
+  width: 100%;
+  height: 10vh;
+  background-color: var(--bg-main);
+  text-align: center;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+main .div-ticker .tickerContent {
+  display: flex;
+  white-space: nowrap;
+}
+
+main .div-ticker .tickerContent h3 {
+  color: var(--text-main);
+  font-size: 2vw;
+  font-weight: 200;
+  padding-right: 100px;
+}
+
+/* pointer canvas */
+
+#canvasCursor {
+  width: 100px;
+  height: 100px;
+  border: 2px solid white;
+  border-radius: 50%;
+
+  pointer-events: none;
+  mix-blend-mode: difference;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/*  Portfolio Gallery */
+
+main .portfolioGallery {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main .portfolioGallery .projectsContent {
+  width: 90%;
+  height: 90vh;
+  display: grid;
+  gap: 15px;
+
+  grid-template-areas:
+    "titlePorjects titlePorjects titlePorjects titlePorjects"
+    "projectImage1 projectImage2 projectImage3 projectImage4"
+    "projectImage1 projectImage2 projectImage3 projectImage4";
+
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 0.5fr repeat(2, 1fr);
+}
+
+main .portfolioGallery .projectsContent .titlePorjects {
+  grid-area: titlePorjects;
+  display: grid;
+  place-items: center;
+}
+
+main .portfolioGallery .projectsContent .projectImage1 {
+  grid-area: projectImage1;
+}
+
+main .portfolioGallery .projectsContent .projectImage2 {
+  grid-area: projectImage2;
+}
+
+main .portfolioGallery .projectsContent .projectImage3 {
+  grid-area: projectImage3;
+}
+
+main .portfolioGallery .projectsContent .projectImage4 {
+  grid-area: projectImage4;
+}
+
+/* image */
+
+main .portfolioGallery .projectsContent .projects {
+  background-color: rgba(149, 146, 146, 0.76);
+  overflow: hidden;
+  border-radius: 12px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main .portfolioGallery .projectsContent .projects img {
+  width: 120%;
+  height: 120%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+main .portfolioGallery .projectsContent .titlePorjects h2 {
+  visibility: hidden;
+  color: var(--text-main);
+  font-size: 4vw;
+  font-weight: 400;
+}
+
+main .ll {
+  width: 100%;
+  height: 100vh;
+  background-color: aquamarine;
+}
+
+/* vision-section */
+
+main .vision-section {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg-main);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+main .vision-section .titleVision {
+  width: 100%;
+  height: 10vh;
+  text-align: center;
+  position: absolute;
+  top: 10%;
+  left: 0;
+}
+
+main .vision-section .titleVision h2 {
+  color: var(--text-main);
+  font-size: 4vw;
+  font-weight: 400;
+  visibility: hidden;
+}
+
+main .vision-section .containerVision {
+  overflow: hidden;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main .vision-section .containerVision h2 {
+  color: var(--text-main);
+  font-size: 6vw;
+  font-weight: 900;
+  visibility: hidden;
+}
+
+/* scroll-section */
+
+main .scroll-section {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+main .scroll-section .horizontal-wrapper {
+  width: fit-content;
+  height: 100vh;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+main .scroll-section .horizontal-wrapper .step-card {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-main);
+  flex-shrink: 0;
+}
+
+/* Horizontal Scroll Gallery  */
+
+main .scroll-section .horizontal-wrapper .step-card section {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+main .scroll-section .horizontal-wrapper .step-card section .imageBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+main .scroll-section .horizontal-wrapper .step-card section .imageBg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+main .scroll-section .horizontal-wrapper .step-card section .imageBg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-main);
+  opacity: 0.7;
+  z-index: 11;
+}
+
+main .scroll-section .horizontal-wrapper .step-card section .numberStep {
+  position: absolute;
+  z-index: 20;
+  top: 5%;
+  left: 5%;
+}
+
+main .scroll-section .horizontal-wrapper .step-card section .numberStep span {
+  color: var(--text-main);
+  font-size: 20vw;
+  font-weight: 700;
+  opacity: 0.4;
+}
+
+main
+  .scroll-section
+  .horizontal-wrapper
+  .step-card
+  section
+  .textContentHorizontal {
+  position: absolute;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+main
+  .scroll-section
+  .horizontal-wrapper
+  .step-card
+  section
+  .textContentHorizontal
+  h3 {
+  color: var(--text-main);
+  font-size: 4vw;
+  font-weight: 400;
+  z-index: 30;
+}
+
+main
+  .scroll-section
+  .horizontal-wrapper
+  .step-card
+  section
+  .textContentHorizontal
+  p {
+  color: var(--text-main);
+  font-size: 2vw;
+  font-weight: 200;
+  z-index: 30;
+}
+
+/* Our Expertise */
+
+main .ourExpertise {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-main);
+  position: relative;
+}
+
+main .ourExpertise h2 {
+  color: var(--text-main);
+  font-size: 4vw;
+  font-weight: 400;
+  position: absolute;
+  top: 5%;
+  visibility: hidden;
+}
+
+main .ourExpertise ul {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+}
+
+main .ourExpertise ul li {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+main .ourExpertise ul li h3 {
+  color: var(--text-main);
+  font-size: 4vw;
+  font-weight: 400;
+  padding-bottom: 15px;
+}
+
+main .ourExpertise ul li p {
+  color: var(--text-main);
+  font-size: 2vw;
+  font-weight: 200;
+  background-color: var(--btn-accent);
+  padding: 2vw 1vw;
+  width: 200px;
+  border-radius: 35px;
+}
+
+main .ourExpertise ul li img {
+  position: absolute;
+  pointer-events: none;
+  width: 80%;
+  height: auto;
+  object-position: center;
+  object-fit: cover;
+  display: block;
+  padding-top: 15px;
+
+  visibility: hidden;
+}
+
+/* theAtmosphere */
+
+main .theAtmosphere {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+main .theAtmosphere .atmosphereContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+main .theAtmosphere .atmosphereContent img {
+  position: absolute;
+  width: 100%;
+  height: 120vh;
+  background-position: center;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  z-index: 10;
+}
+
+main .theAtmosphere .atmosphereContent .atmosphereOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-main);
+  opacity: 0.6;
+  z-index: 11;
+  pointer-events: none;
+}
+
+main .theAtmosphere .atmosphereContent h2 {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text-main);
+  font-size: 4vw;
+  font-weight: 400;
+  z-index: 20;
+  visibility: hidden;
+  /* white-space: nowrap; */
+}
+
+main .theAtmosphere .iconesContainer {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  pointer-events: none;
+}
+
+main .theAtmosphere .iconesContainer .icones {
+  position: absolute;
+  width: 8%;
+  z-index: 30;
+}
+
+main .theAtmosphere .iconesContainer .icones img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+main .theAtmosphere .iconesContainer .icones img:hover {
+  opacity: 1;
+}
+
+main .theAtmosphere .iconesContainer .icones:nth-child(1) {
+  top: 10%;
+  left: 5%;
+}
+main .theAtmosphere .iconesContainer .icones:nth-child(2) {
+  top: 70%;
+  left: 8%;
+}
+main .theAtmosphere .iconesContainer .icones:nth-child(3) {
+  top: 15%;
+  right: 6%;
+}
+main .theAtmosphere .iconesContainer .icones:nth-child(4) {
+  top: 65%;
+  right: 5%;
+}
+main .theAtmosphere .iconesContainer .icones:nth-child(5) {
+  top: 40%;
+  left: 25%;
+}
+main .theAtmosphere .iconesContainer .icones:nth-child(6) {
+  top: 35%;
+  right: 25%;
+}
+main .theAtmosphere .iconesContainer .icones:nth-child(7) {
+  top: 20%;
+  left: 45%;
+}
+main .theAtmosphere .iconesContainer .icones:nth-child(8) {
+  bottom: 15%;
+  left: 42%;
+}
+
+/* footer */
+
+footer {
+  width: 100%;
+  height: 10vh;
+  background-color: var(--bg-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer small {
+  color: var(--text-main);
+  font-size: 3vw;
+  font-weight: 300;
+}
+
+/* mobil size */
+
+@media screen and (max-width: 768px) {
+  header .navbar {
+    gap: 9vw;
+  }
+
+  /* hero */
+  main .hero {
+    display: flex;
+    flex-direction: column;
+  }
+
+  main .hero .leftPart {
+    width: 100%;
+    height: 40%;
+  }
+  main .hero .leftPart .textContant {
+    gap: 30px;
+  }
+  main .hero .leftPart p {
+    font-size: 3vw;
+  }
+
+  main .hero .rightPart {
+    width: 100%;
+    height: 60%;
+  }
+
+  /* portfolio Gallery */
+
+  main .portfolioGallery .projectsContent {
+    grid-template-areas:
+      "titlePorjects titlePorjects"
+      "projectImage1 projectImage2"
+      "projectImage1 projectImage2"
+      "projectImage3 projectImage4"
+      "projectImage3 projectImage4";
+
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 0.5fr repeat(4, 1fr);
+  }
+
+  /* Our vision */
+
+  /* scrollHorizontal */
+
+  main
+    .scroll-section
+    .horizontal-wrapper
+    .step-card
+    section
+    .textContentHorizontal
+    h3 {
+    font-size: 5vw;
+  }
+
+  main
+    .scroll-section
+    .horizontal-wrapper
+    .step-card
+    section
+    .textContentHorizontal
+    p {
+    font-size: 3vw;
+  }
+
+  /* Our Expertise */
+
+  main .ourExpertise ul {
+    flex-direction: column;
+  }
+
+  /* The Atmosphere */
+
+  main .theAtmosphere .atmosphereContent img {
+    object-position: right center;
+  }
+}
